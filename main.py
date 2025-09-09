@@ -89,14 +89,18 @@ def elevenLabsToSpeech(text: str):
     client = ElevenLabs(
     api_key=os.getenv("ELEVENLABS_API_KEY")
     )
+    print("ElevenLabs API Key:", os.getenv("ELEVENLABS_API_KEY"))
+    print("ElevenLabs Voice ID:", os.getenv("ELEVEN_LABS_GIO"))
+    print("Text to say:", text)
 
-    audio = client.text_to_speech.convert(
-    text= text,
-    voice_id= os.getenv("ELEVENLABS_VOICE_ID"),
-    model_id="eleven_flash_v2",
-    output_format="mp3_44100_128",
-)
-    play(audio)
+
+#     audio = client.text_to_speech.convert(
+#     text= text,
+#     voice_id= os.getenv("ELEVEN_LABS_GIO"),
+#     model_id="eleven_flash_v2",
+#     output_format="mp3_44100_128",
+# )
+    # play(audio)
 
 
 if __name__ == "__main__":

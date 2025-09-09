@@ -6,6 +6,7 @@ from openai import OpenAI
 import prompts
 import utils
 
+
 # Load environment variables from .env if available (non-fatal if missing)
 try:
     from dotenv import load_dotenv  # type: ignore
@@ -30,11 +31,18 @@ def take_arguments():
     return parser.parse_args()
 
 def main():
+
+
     args = take_arguments()
     print("Prompt:", args.prompt)
     print("Persona:", args.persona)
     print("Duration (mins):", args.duration_mins)
     print("Technique Hint:", args.technique_hint)
+
+    print("Time for some magic")
+    
+    elevenLabsToSpeech("Ankara Messi, Ankara Messi, Gol gol gol.")
+
 
     # try:
     #     # output_text = response(
@@ -74,6 +82,21 @@ def response(prompt: str, duration_mins: int, technique_hint: str | None = None,
     return text_for_speech
 
 
+def elevenLabsToSpeech(text: str):
+    from elevenlabs.client import ElevenLabs
+    from elevenlabs import play
+
+    client = ElevenLabs(
+    api_key=os.getenv("ELEVENLABS_API_KEY")
+    )
+
+    audio = client.text_to_speech.convert(
+    text= text,
+    voice_id= os.getenv("ELEVENLABS_VOICE_ID"),
+    model_id="eleven_flash_v2",
+    output_format="mp3_44100_128",
+)
+    play(audio)
 
 
 if __name__ == "__main__":

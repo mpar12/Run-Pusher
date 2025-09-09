@@ -5,6 +5,7 @@ Constraints:
 - Match the requested persona and tone.
 - Keep technique guidance simple, actionable.
 - Be motivational.
+- Use metric units.
 - Avoid clichés; be concrete.
 - Stick to the point rather than winding sentences/stories
 - Target LENGTH: about {target_words} words. Do not exceed under any circumstances. """
